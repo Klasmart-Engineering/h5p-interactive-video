@@ -1888,3 +1888,6 @@
 .h5p-interactive-video .h5p-interaction.h5p-audio-interaction .h5p-audio-wrapper {
   height: 100%;
 }
+.h5p-interactive-video .h5p-dialog-interaction.h5p-audio-wrapper {
+  height: 54px; /* Fixed height used in H5P.Audio */
+}
