@@ -1891,3 +1891,12 @@
 .h5p-interactive-video .h5p-dialog-interaction.h5p-audio-wrapper {
   height: 54px; /* Fixed height used in H5P.Audio */
 }
+.h5p-interactive-video.mobile .h5p-dialog-interaction.h5p-audio-wrapper .h5p-audio-inner {
+  height: 4em;
+  width: 4em;
+}
+.h5p-interactive-video.mobile .h5p-dialog-interaction.h5p-audio-wrapper .h5p-audio-inner .h5p-audio-minimal-button {
+  font-size: 2em;
+  height: 100%;
+  width: 100%;
+}
