@@ -977,6 +977,7 @@ function Interaction(parameters, player, previousState) {
       instance.disableInput();
     }
 
+    // Add custom continue button
     if (self.customButtons.continue.image && self.customButtons.continue.image.path) {
       const originalContinueButton = $('.h5p-question-iv-adaptivity-correct').get(0);
       originalContinueButton.classList.add('h5p-none');
@@ -994,15 +995,25 @@ function Interaction(parameters, player, previousState) {
       });
       customContinueButton.appendChild(customImage);
 
-      const position = getPercentagePosition(self.customButtons.continue);
-      customContinueButton.style.left = position.x;
-      customContinueButton.style.top = position.y;
-
+      // Set size in relation to reference
       const size = getPercentageSize(self.customButtons.continue);
       customContinueButton.style.width = size.width;
       customContinueButton.style.height = size.height;
 
-      self.videoWrapper.appendChild(customContinueButton);
+      // Use custom position or simply replace regular button
+      if (self.customButtons.continue.position.x && self.customButtons.continue.position.y) {
+        const position = getPercentagePosition(self.customButtons.continue);
+        customContinueButton.style.left = position.x;
+        customContinueButton.style.top = position.y;
+
+        self.videoWrapper.appendChild(customContinueButton);
+      }
+      else {
+
+        customContinueButton.classList.add('h5p-replace');
+        originalContinueButton.parentNode.appendChild(customContinueButton);
+      }
+
     }
 
     // Wait for any modifications Question does to feedback and buttons
