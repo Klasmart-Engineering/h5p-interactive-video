@@ -588,19 +588,18 @@
                           "fields": [
                             {
                               "name": "x",
-                              "description": "X position.",
                               "type": "number",
                               "min": 0
                             },
                             {
                               "name": "y",
-                              "description": "Y position. If using px, remember that there are 36 pixels reserved for the player navigation bar.",
                               "type": "number",
                               "min": 0
                             },
                             {
                               "name": "unit",
                               "type": "select",
+                              "label": "Unit",
                               "options": [
                                   {
                                     "value": "%",
@@ -620,16 +619,19 @@
                           "type": "group",
                           "label": "Button image reference size",
                           "importance": "low",
-                          "description": "There's not a comfortable graphical editor for setting size and position yet: For now: Set a reference size that the button image was designed for. Button will be scaled and positioned in relation to this size if video canvas size is smaller.",
                           "fields": [
                             {
                               "name": "width",
+                              "label": "Width",
+                              "description": "There's not a comfortable graphical editor for setting size and position yet: For now: Set a reference size that the button image was designed for. Button will be scaled and positioned in relation to this size if video canvas size is smaller.",
                               "type": "number",
                               "default": 1920,
                               "min": 1
                             },
                             {
                               "name": "height",
+                              "label": "height",
+                              "description": "There's not a comfortable graphical editor for setting size and position yet: For now: Set a reference size that the button image was designed for. Button will be scaled and positioned in relation to this size if video canvas size is smaller.",
                               "type": "number",
                               "default": 1080,
                               "min": 1
