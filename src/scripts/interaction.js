@@ -816,6 +816,12 @@ function Interaction(parameters, player, previousState) {
       }
     });
 
+    if (library === 'H5P.DragQuestion') {
+      if (instance.options.behaviour.compactMode) {
+        $interaction.addClass('h5p-overflow-hidden-interaction');
+      }
+    }
+
     if (library !== 'H5P.IVHotspot') {
       // Add background
       $interaction.css('background', visuals.backgroundColor);
@@ -973,6 +979,23 @@ function Interaction(parameters, player, previousState) {
       instance.disableInput();
     }
 
+    // Use custom continue button
+    useCustomContinueButton();
+
+    // Wait for any modifications Question does to feedback and buttons
+    setTimeout(function () {
+      // Strip adaptivity message of p tags
+      const message = adaptivity.message.replace('<p>', '').replace('</p>', '');
+      // Set adaptivity message and hide interaction flow controls
+      instance.updateFeedbackContent(message, true);
+      instance.read(message);
+    }, 0);
+  };
+
+  /**
+   * Use custom continue button.
+   */
+  const useCustomContinueButton = () => {
     // Add custom continue button
     if (self.customButtons.continue.image && self.customButtons.continue.image.path) {
 
@@ -988,37 +1011,28 @@ function Interaction(parameters, player, previousState) {
 
       // Use custom position or simply replace regular button
       if (self.customButtons.continue.position.x && self.customButtons.continue.position.y) {
-        $continueButton.addClass('h5p-custom-image-button-position');
+        // $continueButton.addClass('h5p-custom-image-button-position');
+        //
+        // const position = getPercentagePosition(self.customButtons.continue);
+        // $continueButton.css('left', position.x);
+        // $continueButton.css('top', position.y);
+        //
+        // // Set size in relation to reference
+        // const size = getPercentageSize(self.customButtons.continue);
+        // $continueButton.css('width', size.width);
+        // $continueButton.css('height', size.height);
 
-        const position = getPercentagePosition(self.customButtons.continue);
-        $continueButton.css('left', position.x);
-        $continueButton.css('top', position.y);
-
-        // Set size in relation to reference
-        const size = getPercentageSize(self.customButtons.continue);
-        $continueButton.css('width', size.width);
-        $continueButton.css('height', size.height);
-
-        $continueButton.click(() => {
-          if (player.$videoWrapper.find('.h5p-custom-image-button-position').length > 0) {
-            $continueButton.removeClass('h5p-custom-image-button-position');
-            $inner.find('.h5p-question-buttons').append($continueButton);
-          }
-        });
-
-        player.$videoWrapper.append($continueButton);
+        // $continueButton.get(0).addEventListener('click', () => {
+        //   if (player.$videoWrapper.find('.h5p-custom-image-button-position').length > 0) {
+        //     $continueButton.removeClass('h5p-custom-image-button-position');
+        //     $inner.find('.h5p-question-buttons').append($continueButton);
+        //   }
+        // })
+        //
+        // player.$videoWrapper.append($continueButton);
       }
     }
-
-    // Wait for any modifications Question does to feedback and buttons
-    setTimeout(function () {
-      // Strip adaptivity message of p tags
-      const message = adaptivity.message.replace('<p>', '').replace('</p>', '');
-      // Set adaptivity message and hide interaction flow controls
-      instance.updateFeedbackContent(message, true);
-      instance.read(message);
-    }, 0);
-  };
+  }
 
   /**
    * Get percentage position.
