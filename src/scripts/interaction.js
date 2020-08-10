@@ -980,7 +980,6 @@ function Interaction(parameters, player, previousState) {
     // Add custom continue button
     if (self.customButtons.continue.image && self.customButtons.continue.image.path) {
       const originalContinueButton = $('.h5p-question-iv-adaptivity-correct').get(0);
-      originalContinueButton.classList.add('h5p-none');
 
       const customImage = document.createElement('img');
       customImage.src = H5P.getPath(self.customButtons.continue.image.path, self.contentId);
@@ -992,6 +991,7 @@ function Interaction(parameters, player, previousState) {
         customContinueButton.parentNode.removeChild(customContinueButton);
         originalContinueButton.click();
         originalContinueButton.classList.remove('h5p-none');
+        originalContinueButton.classList.remove('h5p-hidden');
       });
       customContinueButton.appendChild(customImage);
 
@@ -1006,12 +1006,14 @@ function Interaction(parameters, player, previousState) {
         customContinueButton.style.left = position.x;
         customContinueButton.style.top = position.y;
 
+        originalContinueButton.classList.add('h5p-none');
         self.videoWrapper.appendChild(customContinueButton);
       }
       else {
 
         customContinueButton.classList.add('h5p-replace');
         originalContinueButton.parentNode.appendChild(customContinueButton);
+        originalContinueButton.classList.add('h5p-hidden');
       }
 
     }
