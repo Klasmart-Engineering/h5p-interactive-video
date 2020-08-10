@@ -1905,3 +1905,10 @@
 .h5p-joubelui-button.h5p-none {
   display: none;
 }
+.h5p-joubelui-button.h5p-hidden {
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  visibility: hidden;
+  width: 0;
+}
