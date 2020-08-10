@@ -588,11 +588,13 @@
                           "fields": [
                             {
                               "name": "x",
+                              "label": "X position",
                               "type": "number",
                               "min": 0
                             },
                             {
                               "name": "y",
+                              "label": "Y position",
                               "type": "number",
                               "min": 0
                             },
