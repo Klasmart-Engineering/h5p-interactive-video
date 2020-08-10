@@ -111,6 +111,23 @@ const isScrollableLibrary = function (library) {
 function Interaction(parameters, player, previousState) {
   var self = this;
 
+  // Set default values
+  parameters = $.extend(true, {
+    customButtons: {
+      continue: {
+        position: {
+          x: 0,
+          y: 0,
+          unit: '%'
+        },
+        reference: {
+          width: 1920,
+          height: 1080
+        }
+      }
+    }
+  }, parameters);
+
   // Initialize event inheritance
   H5P.EventDispatcher.call(self);
 
@@ -154,6 +171,13 @@ function Interaction(parameters, player, previousState) {
 
   // Metadata that might be used by forms
   var metadata = parameters.action.metadata;
+
+  // Remember properties of player
+  this.contentId = player.contentId;
+  this.videoWrapper = player.$videoWrapper.get(0);
+
+  // Custom buttons
+  this.customButtons = parameters.customButtons;
 
   this.on('open-dialog', function () {
     openDialog();
@@ -953,6 +977,34 @@ function Interaction(parameters, player, previousState) {
       instance.disableInput();
     }
 
+    if (self.customButtons.continue.image && self.customButtons.continue.image.path) {
+      const originalContinueButton = $('.h5p-question-iv-adaptivity-correct').get(0);
+      originalContinueButton.classList.add('h5p-none');
+
+      const customImage = document.createElement('img');
+      customImage.src = H5P.getPath(self.customButtons.continue.image.path, self.contentId);
+
+      const customContinueButton = document.createElement('button');
+      customContinueButton.classList.add('h5p-custom-image-button');
+      customContinueButton.title = originalContinueButton.title;
+      customContinueButton.addEventListener('click', () => {
+        customContinueButton.parentNode.removeChild(customContinueButton);
+        originalContinueButton.click();
+        originalContinueButton.classList.remove('h5p-none');
+      });
+      customContinueButton.appendChild(customImage);
+
+      const position = getPercentagePosition(self.customButtons.continue);
+      customContinueButton.style.left = position.x;
+      customContinueButton.style.top = position.y;
+
+      const size = getPercentageSize(self.customButtons.continue);
+      customContinueButton.style.width = size.width;
+      customContinueButton.style.height = size.height;
+
+      self.videoWrapper.appendChild(customContinueButton);
+    }
+
     // Wait for any modifications Question does to feedback and buttons
     setTimeout(function () {
       // Strip adaptivity message of p tags
@@ -962,6 +1014,58 @@ function Interaction(parameters, player, previousState) {
       instance.read(message);
     }, 0);
   };
+
+  /**
+   * Get percentage position.
+   * @param {object} parameters Parameters.
+   * @param {object} parameters.position Position.
+   * @param {number} parameters.position.x X position.
+   * @param {number} parameters.position.y Y position.
+   * @param {string} parameters.position.unit Unit (% or px).
+   * @param {object} parameters.reference Position.
+   * @param {number} parameters.reference.width Reference width.
+   * @param {number} parameters.reference.height Reference height.
+   */
+  const getPercentagePosition = (parameters) => {
+    let x = 0;
+    let y = 0;
+
+    if (parameters.position.unit === '%') {
+      x = parameters.position.x;
+      y = parameters.position.y;
+    }
+    else if (parameters.position.unit === 'px') {
+      x = (parameters.position.x / parameters.reference.width) * 100;
+      y = (parameters.position.y / parameters.reference.height) * 100;
+    }
+
+    return {
+      x: `${Math.min(Math.max(x, 0), 100)}%`,
+      y: `${Math.min(Math.max(y, 0), 100)}%`
+    }
+  }
+
+  /**
+   * Get percentage position.
+   * @param {object} parameters Parameters.
+   * @param {object} parameters.image Image object.
+   * @param {number} parameters.image.width Image width.
+   * @param {number} parameters.image.height Image height.
+   * @param {object} parameters.reference Position.
+   * @param {number} parameters.reference.width Reference width.
+   * @param {number} parameters.reference.height Reference height.
+   */
+  const getPercentageSize = (parameters) => {
+    let width = parameters.image.width || 100;
+    let height = parameters.image.height || 100;
+
+    const ratio = width / height;
+
+    return {
+      width: `${width / parameters.reference.width * 100}%`,
+      height: `${height / parameters.reference.height * 100}%`
+    }
+  }
 
   /**
    * Continue with video unless a interaction intercepts this.
