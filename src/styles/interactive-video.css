@@ -1883,3 +1883,21 @@
 .h5p-interactive-video .h5p-control:not(.h5p-no-tooltip):hover > .h5p-interactive-video-tooltip {
   visibility: visible;
 }
+.h5p-interactive-video .h5p-video-wrapper button.h5p-custom-image-button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  z-index: 52;
+}
+.h5p-interactive-video .h5p-video-wrapper button.h5p-custom-image-button img {
+  height: 100%;
+  width: 100%;
+}
+.h5p-joubelui-button.h5p-none {
+  display: none;
+}
