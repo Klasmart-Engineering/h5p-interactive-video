@@ -172,10 +172,6 @@ function Interaction(parameters, player, previousState) {
   // Metadata that might be used by forms
   var metadata = parameters.action.metadata;
 
-  // Remember properties of player
-  this.contentId = player.contentId;
-  this.videoWrapper = player.$videoWrapper.get(0);
-
   // Custom buttons
   this.customButtons = parameters.customButtons;
 
@@ -979,43 +975,39 @@ function Interaction(parameters, player, previousState) {
 
     // Add custom continue button
     if (self.customButtons.continue.image && self.customButtons.continue.image.path) {
-      const originalContinueButton = $('.h5p-question-iv-adaptivity-correct').get(0);
 
-      const customImage = document.createElement('img');
-      customImage.src = H5P.getPath(self.customButtons.continue.image.path, self.contentId);
+      let $continueButton = $outer.find('.h5p-question-iv-adaptivity-correct');
+      if ($continueButton.length === 0) {
+        $continueButton = $outer.find('.h5p-question-iv-adaptivity-wrong');
+      }
 
-      const customContinueButton = document.createElement('button');
-      customContinueButton.classList.add('h5p-custom-image-button');
-      customContinueButton.title = originalContinueButton.title;
-      customContinueButton.addEventListener('click', () => {
-        customContinueButton.parentNode.removeChild(customContinueButton);
-        originalContinueButton.click();
-        originalContinueButton.classList.remove('h5p-none');
-        originalContinueButton.classList.remove('h5p-hidden');
-      });
-      customContinueButton.appendChild(customImage);
-
-      // Set size in relation to reference
-      const size = getPercentageSize(self.customButtons.continue);
-      customContinueButton.style.width = size.width;
-      customContinueButton.style.height = size.height;
+      const path = H5P.getPath(self.customButtons.continue.image.path, player.contentId);
+      $continueButton.addClass('h5p-custom-image-button');
+      $continueButton.html('&#x200b;');
+      $continueButton.css('background-image', `url("${path}")`);
 
       // Use custom position or simply replace regular button
       if (self.customButtons.continue.position.x && self.customButtons.continue.position.y) {
+        $continueButton.addClass('h5p-custom-image-button-position');
+
         const position = getPercentagePosition(self.customButtons.continue);
-        customContinueButton.style.left = position.x;
-        customContinueButton.style.top = position.y;
+        $continueButton.css('left', position.x);
+        $continueButton.css('top', position.y);
 
-        originalContinueButton.classList.add('h5p-none');
-        self.videoWrapper.appendChild(customContinueButton);
+        // Set size in relation to reference
+        const size = getPercentageSize(self.customButtons.continue);
+        $continueButton.css('width', size.width);
+        $continueButton.css('height', size.height);
+
+        $continueButton.click(() => {
+          if (player.$videoWrapper.find('.h5p-custom-image-button-position').length > 0) {
+            $continueButton.removeClass('h5p-custom-image-button-position');
+            $inner.find('.h5p-question-buttons').append($continueButton);
+          }
+        });
+
+        player.$videoWrapper.append($continueButton);
       }
-      else {
-
-        customContinueButton.classList.add('h5p-replace');
-        originalContinueButton.parentNode.appendChild(customContinueButton);
-        originalContinueButton.classList.add('h5p-hidden');
-      }
-
     }
 
     // Wait for any modifications Question does to feedback and buttons

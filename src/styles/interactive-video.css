@@ -1562,6 +1562,39 @@
   content: "\f051";
 }
 
+.h5p-interactive-video .h5p-question .h5p-question-iv-adaptivity-correct.h5p-custom-image-button,
+.h5p-interactive-video .h5p-question .h5p-question-iv-adaptivity-wrong.h5p-custom-image-button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.h5p-interactive-video .h5p-question .h5p-question-iv-adaptivity-correct.h5p-custom-image-button::before,
+.h5p-interactive-video .h5p-question .h5p-question-iv-adaptivity-wrong.h5p-custom-image-button::before {
+  content: none;
+}
+
+.h5p-interactive-video .h5p-question .h5p-question-iv-adaptivity-correct.h5p-custom-image-button:active,
+.h5p-interactive-video .h5p-question .h5p-question-iv-adaptivity-wrong.h5p-custom-image-button:active {
+  box-shadow: none;
+}
+
+.h5p-interactive-video .h5p-question-iv-adaptivity-correct.h5p-custom-image-button-position,
+.h5p-interactive-video .h5p-question-iv-adaptivity-wrong.h5p-custom-image-button-position {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 52;
+}
+
+.h5p-interactive-video .h5p-question-iv-adaptivity-correct.h5p-custom-image-button-position:active,
+.h5p-interactive-video .h5p-question-iv-adaptivity-wrong.h5p-custom-image-button-position:active {
+  box-shadow: none;
+}
+
 .h5p-interactive-video .h5p-question .h5p-question-iv-continue {
   float: right;
 }
@@ -1882,33 +1915,4 @@
 }
 .h5p-interactive-video .h5p-control:not(.h5p-no-tooltip):hover > .h5p-interactive-video-tooltip {
   visibility: visible;
-}
-.h5p-interactive-video .h5p-video-wrapper button.h5p-custom-image-button {
-  background: none;
-  border: 0;
-  cursor: pointer;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  z-index: 52;
-}
-.h5p-interactive-video .h5p-video-wrapper button.h5p-custom-image-button.h5p-replace {
-  position: relative;
-  float: right;
-}
-.h5p-interactive-video .h5p-video-wrapper button.h5p-custom-image-button img {
-  height: 100%;
-  width: 100%;
-}
-.h5p-joubelui-button.h5p-none {
-  display: none;
-}
-.h5p-joubelui-button.h5p-hidden {
-  margin: 0;
-  opacity: 0;
-  padding: 0;
-  visibility: hidden;
-  width: 0;
 }
