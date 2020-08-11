@@ -898,13 +898,20 @@ function Interaction(parameters, player, previousState) {
 
     // if no adaptivity branching
     if (!adaptivity || adaptivity.seekTo === undefined) {
+
+      // Auto continue
+      if (parameters.adaptivity.autoContinue && showContinueButton) {
+        continueFromAdaptivity();
+
+        return;
+      }
+
       // Add continue button if no adaptivity
       if (instance.hasButton !== undefined) {
         if (!instance.hasButton('iv-continue')) {
           // Register continue button
           instance.addButton('iv-continue', player.l10n.defaultAdaptivitySeekLabel, function () {
-            closeInteraction();
-            continueWithVideo();
+            continueFromAdaptivity();
           });
         }
 
@@ -932,19 +939,27 @@ function Interaction(parameters, player, previousState) {
     var adaptivityId = (fullScore ? 'correct' : 'wrong');
     var adaptivityLabel = adaptivity.seekLabel ? adaptivity.seekLabel : player.l10n.defaultAdaptivitySeekLabel;
 
+    // Auto continue
+    if (parameters.adaptivity.autoContinue) {
+      continueFromAdaptivity({
+        seekTo: adaptivity.seekTo,
+        reset: !fullScore && instance.resetTask,
+        adaptivityId: adaptivityId,
+        remove: true
+      });
+
+      return;
+    }
+
     // add and show adaptivity button, hide continue button
     instance.hideButton('iv-continue')
       .addButton('iv-adaptivity-' + adaptivityId, adaptivityLabel, function () {
-        closeInteraction(adaptivity.seekTo);
-
-        // Reset interaction
-        if (!fullScore && instance.resetTask) {
-          instance.resetTask();
-          instance.hideButton('iv-adaptivity-' + adaptivityId);
-        }
-
-        self.remove();
-        continueWithVideo(adaptivity.seekTo);
+        continueFromAdaptivity({
+          seekTo: adaptivity.seekTo,
+          reset: !fullScore && instance.resetTask,
+          adaptivityId: adaptivityId,
+          remove: true
+        });
       })
       .showButton('iv-adaptivity-' + adaptivityId, 1)
       .hideButton('iv-adaptivity-' + (fullScore ? 'wrong' : 'correct'), 1)
@@ -968,6 +983,38 @@ function Interaction(parameters, player, previousState) {
       instance.read(message);
     }, 0);
   };
+
+  /**
+   * Continue from adaptivity.
+   * @param {object} [parameters] Parameters.
+   * @param {number} [parameters.seekTo] Time to seek to.
+   * @param {boolean} [parameters.reset] If true, will reset the task.
+   * @param {string} [parameters.adaptivityId] Continue button selector for reset.
+   * @param {boolean} [parameters.remove] If true, will remove the interaction.
+   */
+  const continueFromAdaptivity = (parameters = {}) => {
+    closeInteraction(parameters.seekTo);
+
+    // Reset interaction
+    if (parameters.reset) {
+      instance.resetTask();
+
+      // Could simply hide correct + wrong, keeping adaptivityId for robustness
+      if (!parameters.adaptivityId) {
+        instance.hideButton('iv-adaptivity-correct');
+        instance.hideButton('iv-adaptivity-wrong');
+      }
+      else {
+        instance.hideButton('iv-adaptivity-' + parameters.adaptivityId);
+      }
+    }
+
+    if (parameters.remove) {
+      self.remove();
+    }
+
+    continueWithVideo(parameters.seekTo);
+  }
 
   /**
    * Continue with video unless a interaction intercepts this.

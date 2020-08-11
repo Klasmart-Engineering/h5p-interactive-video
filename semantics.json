@@ -365,6 +365,12 @@
                       ]
                     },
                     {
+                      "name": "autoContinue",
+                      "type": "boolean",
+                      "label": "Continue automatically",
+                      "description": "If set, video will continue automatically after task is complete. Will not continue if full score is required, but user has not achieved full score."
+                    },
+                    {
                       "name": "requireCompletion",
                       "type": "boolean",
                       "label": "Require full score for task before proceeding",

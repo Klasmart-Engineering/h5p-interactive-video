@@ -154,6 +154,10 @@
                         ]
                       },
                       {
+                        "label": "Continue automatically",
+                        "description": "If set, video will continue automatically after task is complete. Will not continue if full score is required, but user has not achieved full score."
+                      },
+                      {
                         "label": "Vaadi täydet pisteet tehtävästä ennen jatkamista",
                         "description": "Parhaimman toiminnan varmistamiseksi tätä toimintoa on suositeltavaa käyttää vuorovaikutteisen videon \"Estä videossa eteenpäin hyppiminen\" toiminnon kanssa"
                       }
