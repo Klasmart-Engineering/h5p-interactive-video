@@ -219,59 +219,6 @@
                         "description": "境界線とアイコンを追加してインタラクションがクリックできることを示します"
                       }
                     ]
-                  },
-                  {
-                    "label": "Custom buttons",
-                    "fields": [
-                      {
-                        "label": "Continue button",
-                        "fields": [
-                          {
-                            "label": "Image",
-                            "description": "Custom image for continue button"
-                          },
-                          {
-                            "label": "Button position",
-                            "description": "Button position",
-                            "fields": [
-                              {
-                                "label": "X position"
-                              },
-                              {
-                                "label": "Y position"
-                              },
-                              {
-                                "label": "Unit",
-                                "options": [
-                                    {
-                                      "label": "%"
-                                    },
-                                    {
-                                      "label": "px"
-                                    }
-                                  ]
-                              }
-                            ]
-                          },
-                          {
-                            "label": "Button image reference size",
-                            "fields": [
-                              {
-                                "label": "Width",
-                                "description": "There's not a comfortable graphical editor for setting size and position yet: For now: Set a reference size that the button image was designed for. Button will be scaled and positioned in relation to this size if video canvas size is smaller."
-                              },
-                              {
-                                "label": "height",
-                                "description": "There's not a comfortable graphical editor for setting size and position yet: For now: Set a reference size that the button image was designed for. Button will be scaled and positioned in relation to this size if video canvas size is smaller."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "label": "dummy"
-                      }
-                    ]
                   }
                 ]
               }
