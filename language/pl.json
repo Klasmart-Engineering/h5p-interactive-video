@@ -154,6 +154,10 @@
                         ]
                       },
                       {
+                        "label": "Continue automatically",
+                        "description": "If set, video will continue automatically after task is complete. Will not continue if full score is required, but user has not achieved full score."
+                      },
+                      {
                         "label": "Wymagaj w pełni poprawnie wykonanego zadania przed kontynuacją",
                         "description": "Najlepszy efekt uzyskasz używając tej opcji razem z opcją 'Zapobiegaj przeskakiwaniu do przodu'."
                       }
