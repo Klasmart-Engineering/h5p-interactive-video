@@ -154,6 +154,10 @@
                         ]
                       },
                       {
+                        "label": "Continue automatically",
+                        "description": "If set, video will continue automatically after task is complete. Will not continue if full score is required, but user has not achieved full score."
+                      },
+                      {
                         "label": "Kräv full poäng på uppgift innan användaren kan fortsätta",
                         "description": "För att uppnå bästa funktionalitet bör denna inställning användas ihop med inställningen \"Förhindra att spola framåt i video\" i Interaktiv video."
                       }
