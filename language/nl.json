@@ -255,6 +255,10 @@
           "description": "Laat de video automatisch starten"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Video opnieuw afspelen",
           "description": "Ga na of de video opnieuw moet worden afgespeeld"
         },

@@ -255,6 +255,10 @@
           "description": "Inizia automaticamente la riproduzione del video"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Riproduci ciclicamente il video",
           "description": "Verifica se il video debba eseguire un ciclo"
         },

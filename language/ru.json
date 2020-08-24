@@ -255,6 +255,10 @@
           "description": "Начать воспроизведение видео автоматически"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Зациклить видео",
           "description": "Отметьте, если видео должно запускаться в цикле"
         },
