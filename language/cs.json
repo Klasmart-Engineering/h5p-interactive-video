@@ -255,6 +255,10 @@
           "description": "Spustit automatické přehrávání videa"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Smyčka videa",
           "description": "Zkontrolujte, zda by se video nemělo spustit ve smyčce"
         },

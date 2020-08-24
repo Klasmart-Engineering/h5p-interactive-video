@@ -255,6 +255,10 @@
           "description": "Το βίντεο ξεκινά να παίζει αυτόματα"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Αυτόματη επανάληψη αναπαραγωγής",
           "description": "Επιλέξτε εάν η αναπαραγωγή του βίντεο θα επαναλαμβάνεται κάθε φορά που τελειώνει"
         },

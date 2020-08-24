@@ -255,6 +255,10 @@
           "description": "Videoposnetek se začne predvajati samodejno."
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Predvajaj v zanki",
           "description": "Predlagan je premislek o smiselnosti predvajanja posnetka v zanki."
         },

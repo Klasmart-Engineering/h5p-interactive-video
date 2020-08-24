@@ -663,6 +663,14 @@
         "description": "Start playing the video automatically"
       },
       {
+        "name": "autofullscreen",
+        "type": "boolean",
+        "label": "Auto-fullscreen on play",
+        "default": false,
+        "optional": true,
+        "description": "Go to fullscreen when playing video"
+      },
+      {
         "name": "loop",
         "type": "boolean",
         "label": "Loop the video",

@@ -255,6 +255,10 @@
           "description": "自動開始撥放影像"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "循環播放",
           "description": "確認影像是否應循環播放"
         },

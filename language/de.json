@@ -255,6 +255,10 @@
           "description": "Das Video startet automatisch, wenn es aufgerufen wird"
         },
         {
+          "label": "Video automatisch im Vollbild",
+          "description": "Beim Starten des Video automatisch den Vollbildmodus nutzen"
+        },
+        {
           "label": "Video als Schleife spielen",
           "description": "Aktivieren, wenn das Video in einer Schleife abgespielt werden soll"
         },
