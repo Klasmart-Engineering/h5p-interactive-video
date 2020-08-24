@@ -154,6 +154,10 @@
                         ]
                       },
                       {
+                        "label": "Continue automatically",
+                        "description": "If set, video will continue automatically after task is complete. Will not continue if full score is required, but user has not achieved full score."
+                      },
+                      {
                         "label": "Require full score for task before proceeding",
                         "description": "For best functionality this option should be used in conjunction with the \"Prevent skipping forward in a video\" option of Interactive Video."
                       }

@@ -1589,6 +1589,14 @@
   width: 100%;
 }
 
+.h5p-interactive-video .h5p-interaction.h5p-poster.h5p-dragquestion-interaction.h5p-overflow-hidden-interaction .h5p-interaction-outer {
+  overflow: hidden;
+}
+
+.h5p-interactive-video .h5p-dragquestion-interaction .h5p-dragquestion.h5p-compact-mode .h5p-question-buttons {
+  width: calc(100% - 2em);
+}
+
 /* Center images in big dialog */
 .h5p-interactive-video .h5p-dialog.h5p-big[data-lib="H5P.Image"] .h5p-dialog-inner {
   position: relative;
