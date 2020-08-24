@@ -251,6 +251,10 @@
           "description": "Alusta video mängimist automaatselt"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Videokordus",
           "description": "Märgi, kui video peaks mängima korduses"
         },

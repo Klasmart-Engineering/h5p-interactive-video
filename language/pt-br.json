@@ -251,6 +251,10 @@
           "description": "A reprodução do vídeo começa automaticamente"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Vídeo em loop",
           "description": "Marque se o vídeo deve rodar em loop"
         },

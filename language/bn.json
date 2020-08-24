@@ -251,6 +251,10 @@
           "description": "আপনা থেকেই ভিডিও চালু করো।"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "লুপ ভিডিও",
           "description": "ভিডিওটা লুপ আকারে বারবার চলবে"
         },

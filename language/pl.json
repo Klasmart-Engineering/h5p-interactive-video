@@ -251,6 +251,10 @@
           "description": "Automatycznie zacznij odtwarzanie"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Pętla",
           "description": "Odtwarzaj wideo w pętli: gdy dojdzie do końca, zacznie się znów od początku"
         },

@@ -251,6 +251,10 @@
           "description": "Video käynnistetään automaattisesti"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Toista video",
           "description": "Valitse toistaaksesi videota loputtomasti"
         },

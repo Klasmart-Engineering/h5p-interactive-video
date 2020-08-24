@@ -251,6 +251,10 @@
           "description": "在连接影片后自动播放"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "影片循环播放",
           "description": "在影片播放完后会重新播放"
         },

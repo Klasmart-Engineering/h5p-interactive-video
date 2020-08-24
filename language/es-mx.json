@@ -251,6 +251,10 @@
           "description": "Seleccionar si el vídeo debería reproducirse en loop"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Sobre-escribir botón \"Mostrar solución\"",
           "description": "Esta opción determina si el botón \"Mostrar solución\" se mostrará para todas las preguntas, se desactivará para todos o se configurará para cada pregunta individualmente."
         },

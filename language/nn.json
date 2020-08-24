@@ -251,6 +251,10 @@
           "description": "Start playing the video automatically"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Loop the video",
           "description": "Check if video should run in a loop"
         },
