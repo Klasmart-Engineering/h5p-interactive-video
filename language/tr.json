@@ -255,6 +255,10 @@
           "description": "Videonun oynatılması otomatik olarak başlasın"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Video sürekli dönsün",
           "description": "Video sürekli başa dönecekse işaretleyin"
         },

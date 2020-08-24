@@ -255,6 +255,10 @@
           "description": "A reprodução do vídeo começa automaticamente"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Repetir automaticamente",
           "description": "Marque se o vídeo deve repetir quando terminar"
         },

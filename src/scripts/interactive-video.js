@@ -108,6 +108,7 @@ function InteractiveVideo(params, id, contentData) {
     self.showBookmarksmenuOnLoad = (params.override.showBookmarksmenuOnLoad !== undefined ? params.override.showBookmarksmenuOnLoad : false);
     self.preventSkipping = params.override.preventSkipping || false;
     self.deactivateSound = params.override.deactivateSound || false;
+    self.autofullscreen = params.override.autofullscreen || false;
   }
   // Translated UI text defaults
   self.l10n = $.extend({
@@ -498,16 +499,16 @@ function InteractiveVideo(params, id, contentData) {
 
     if (self.controls.$play.hasClass('h5p-pause') && !disabled) {
 
-      // Auto toggle fullscreen on play if on a small device
+      // Auto toggle fullscreen on play if on a small device or if requested
       var isSmallDevice = screen ? Math.min(screen.width, screen.height) <= self.width : true;
       const canPlayInFullScreen = H5P.fullscreenSupported
         && !self.hasFullScreen
-        && isSmallDevice
         && self.$container.hasClass('h5p-standalone')
-        && self.$container.hasClass('h5p-minimal');
+        && ((isSmallDevice && self.$container.hasClass('h5p-minimal')) || self.autofullscreen);
       if (canPlayInFullScreen) {
         self.toggleFullScreen();
       }
+
       self.video.play();
       self.toggleEndscreen(false);
       self.closePopupMenus();
@@ -683,7 +684,7 @@ InteractiveVideo.prototype.attach = function ($container) {
 
   // 'video only' fallback has no interactions
   let isAnswerable = this.hasMainSummary();
-  
+
   if (this.interactions) {
     // interactions require parent $container, recreate with input
     this.interactions.forEach(function (interaction) {
@@ -841,7 +842,7 @@ InteractiveVideo.prototype.addSplash = function () {
       '</div>' +
     '</div>')
     .click(function () {
-      that.video.play();
+      that.togglePlayPause();
     })
     .appendTo(this.$overlay)
     .find('.h5p-interaction-button')

@@ -255,6 +255,10 @@
           "description": "Démarrer la vidéo automatiquement"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "Vidéo en boucle",
           "description": "Cochez cette case pour que la vidéo tourne en boucle"
         },
