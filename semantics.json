@@ -176,6 +176,11 @@
                     {
                       "name": "to",
                       "type": "number"
+                    },
+                    {
+                      "name": "fps",
+                      "type": "number",
+                      "widget": "none"
                     }
                   ]
                 },
@@ -677,6 +682,14 @@
         "default": false,
         "optional": true,
         "description": "Check if video should run in a loop"
+      },
+      {
+        "name": "fps",
+        "type": "number",
+        "label": "Frames per second",
+        "optional": true,
+        "min": 1,
+        "description": "Set the video's frames per second explicitly using frame based timecodes."
       },
       {
         "name": "showSolutionButton",

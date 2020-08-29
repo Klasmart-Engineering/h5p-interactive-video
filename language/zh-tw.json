@@ -263,6 +263,10 @@
           "description": "確認影像是否應循環播放"
         },
         {
+          "label": "Frames per second",
+          "description": "Set the video's frames per second explicitly using frame based timecodes."
+        },
+        {
           "label": "“查看解法”功能鈕",
           "description": "設定所有問題是否顯示”查看解法”功能鈕,全部啟用或是禁用.",
           "options": [

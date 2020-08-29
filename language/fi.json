@@ -263,6 +263,10 @@
           "description": "Valitse toistaaksesi videota loputtomasti"
         },
         {
+          "label": "Frames per second",
+          "description": "Set the video's frames per second explicitly using frame based timecodes."
+        },
+        {
           "label": "\"Näytä vastaus\"-painike",
           "description": "Ota käyttöön kaikissa kysymyksissä, ei yhdessäkään, tai jätä tyhjäksi käyttääksesi tehtäväkohtaisia asetuksia",
           "options": [

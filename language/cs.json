@@ -263,6 +263,10 @@
           "description": "Zkontrolujte, zda by se video nemělo spustit ve smyčce"
         },
         {
+          "label": "Frames per second",
+          "description": "Set the video's frames per second explicitly using frame based timecodes."
+        },
+        {
           "label": "Přepis \"Zobrazit řešení\" tlačítka",
           "description": "Tato volba určuje, zda se u všech otázek zobrazí tlačítko \" Zobrazit řešení \" , zakázáno pro všechny nebo nakonfigurováno pro každou otázku samostatně.",
           "options": [

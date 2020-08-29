@@ -263,6 +263,10 @@
           "description": "Отметьте, если видео должно запускаться в цикле"
         },
         {
+          "label": "Frames per second",
+          "description": "Set the video's frames per second explicitly using frame based timecodes."
+        },
+        {
           "label": "Переопределить кнопку \"Показать решение\"",
           "description": "Этот параметр определяет, будет ли кнопка \"Показать решение\" отображаться для всех вопросов, отключена для всех или настроена для каждого вопроса отдельно.",
           "options": [
