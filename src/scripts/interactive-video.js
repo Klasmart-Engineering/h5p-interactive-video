@@ -501,6 +501,7 @@ function InteractiveVideo(params, id, contentData) {
 
       // Auto toggle fullscreen on play if on a small device or if requested
       var isSmallDevice = screen ? Math.min(screen.width, screen.height) <= self.width : true;
+<<<<<<< HEAD
       const canPlayInFullScreen =
         H5P.fullscreenSupported &&
         !self.hasFullScreen &&
@@ -508,6 +509,12 @@ function InteractiveVideo(params, id, contentData) {
         (
           isSmallDevice && self.$container.hasClass('h5p-minimal') || self.autofullscreen
         );
+=======
+      const canPlayInFullScreen = H5P.fullscreenSupported
+        && !self.hasFullScreen
+        && self.$container.hasClass('h5p-standalone')
+        && ((isSmallDevice && self.$container.hasClass('h5p-minimal')) || self.autofullscreen);
+>>>>>>> origin/fps-option
       if (canPlayInFullScreen) {
         self.toggleFullScreen();
       }

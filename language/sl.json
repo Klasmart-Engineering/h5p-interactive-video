@@ -263,6 +263,10 @@
           "description": "Predlagan je premislek o smiselnosti predvajanja posnetka v zanki."
         },
         {
+          "label": "Frames per second",
+          "description": "Set the video's frames per second explicitly using frame based timecodes."
+        },
+        {
           "label": "Določi prikaz gumba \"Prikaži rešitev\"",
           "description": "Nastavitev vpliva na prikaz rešitve v vseh vprašanjih (npr. onemogočeno povsod, omogočeno individualno).",
           "options": [

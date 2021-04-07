@@ -263,6 +263,10 @@
           "description": "Aktivieren, wenn das Video in einer Schleife abgespielt werden soll"
         },
         {
+          "label": "Frames pro Sekunde",
+          "description": "Lege die Frames pro Sekunde für das Video fest, um sie ausdrücklich im Timecode setzen zu können."
+        },
+        {
           "label": "Überschreiben der Anzeigeoptionen des \"Lösungen anzeigen\"-Buttons",
           "description": "Diese Option gibt an, ob der \"Lösung anzeigen\"-Button für alle Fragen angezeigt, ausgeblendet oder für jede Frage individuell konfiguriert wird.",
           "options": [

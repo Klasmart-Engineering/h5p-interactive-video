@@ -263,6 +263,10 @@
           "description": "Odtwarzaj wideo w pętli: gdy dojdzie do końca, zacznie się znów od początku"
         },
         {
+          "label": "Frames per second",
+          "description": "Set the video's frames per second explicitly using frame based timecodes."
+        },
+        {
           "label": "Przycisk 'Pokaż rozwiązanie' (globalny)",
           "description": "Wybierz, czy przycisk 'Pokaż rozwiązanie' ma być dostępny we wszystkich zadaniach, niedostępny we wszystkich zadaniach, czy dostępny lub niedostępny zależnie od ustawień każdego zadania.",
           "options": [

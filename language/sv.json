@@ -263,6 +263,10 @@
           "description": "Aktivera för att visa video i lopp"
         },
         {
+          "label": "Frames per second",
+          "description": "Set the video's frames per second explicitly using frame based timecodes."
+        },
+        {
           "label": "Ersätt knapp \"Visa rätt svar\"",
           "description": "Denna inställning avgör om knappen \"Visa rätt svar\" ska visas för alla frågor, döljas på alla frågor eller konfigureras individuellt på varje fråga.",
           "options": [

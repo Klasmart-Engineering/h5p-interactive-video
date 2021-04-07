@@ -251,12 +251,20 @@
           "description": "Introduzca el código de tiempo en el formato M:SS"
         },
         {
-          "label": "Reproducir en loop",
-          "description": "Seleccionar si el vídeo debería reproducirse en loop"
+          "label": "Auto-play video",
+          "description": "Start playing the video automatically"
         },
         {
           "label": "Auto-fullscreen on play",
           "description": "Go to fullscreen when playing video"
+        },
+        {
+          "label": "Reproducir en loop",
+          "description": "Seleccionar si el vídeo debería reproducirse en loop"
+        },
+        {
+          "label": "Frames per second",
+          "description": "Set the video's frames per second explicitly using frame based timecodes."
         },
         {
           "label": "Sobre-escribir botón \"Mostrar solución\"",
