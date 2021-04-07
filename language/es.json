@@ -269,6 +269,14 @@
         {
           "label": "Sobre-escribir botón \"Mostrar solución\"",
           "description": "Esta opción determina si el botón \"Mostrar solución\" se mostrará para todas las preguntas, se desactivará para todos o se configurará para cada pregunta individualmente."
+          "options": [
+            {
+              "label": "Habilitado"
+            },
+            {
+              "label": "Desactivado"
+            }
+          ]
         },
         {
           "label": "Sobre-escribir botón  \"Reintentar\"",
@@ -285,18 +293,6 @@
         {
           "label": "Mostrar el menú de marcadores en la carga",
           "description": "Esta función no está disponible en iPad cuando se utiliza YouTube como fuente de video",
-          "options": [
-            {
-              "label": "Habilitado"
-            },
-            {
-              "label": "Deshabilitado"
-            }
-          ]
-        },
-        {
-          "label": "Iniciar con el menú de marcadores abierto",
-          "description": "Esta función no está disponible en iPad cuando se utiliza YouTube como fuente de video"
         },
         {
           "label": "Mostrar botón para rebobinar 10 segundos"

@@ -156,6 +156,10 @@
                       {
                         "label": "진행하기 전에 과제에 대한 만점 점수 필요",
                         "description": "최상의 기능을 위해 이 옵션을 대화형 비디오에서 \"Prevent skipping forward in a video\"(앞으로 건너뛰기 방지) 옵션과 함께 사용해야 한다."
+                      },
+                      {
+                        "label": "Require full score for task before proceeding",
+                        "description": "For best functionality this option should be used in conjunction with the \"Prevent skipping forward in a video\" option of Interactive Video."
                       }
                     ]
                   },
@@ -251,11 +255,19 @@
           "description": "비디오 자동 재생 시작"
         },
         {
+          "label": "Auto-fullscreen on play",
+          "description": "Go to fullscreen when playing video"
+        },
+        {
           "label": "비디오 반복 재생",
           "description": "비디오가 반복해서 재생되어야 하는지 확인"
         },
         {
-          "label": "\"Sow Solution\" (해답보이기) 버튼 재정의",
+          "label": "Frames per second",
+          "description": "Set the video's frames per second explicitly using frame based timecodes."
+        },
+        {
+          "label": "\"Show Solution\" (해답보이기) 버튼 재정의",
           "description": "이 옵션은 모든 질문에 대해 \"Show Solution\" 버튼을 표시할지 또는 각 질문에 대해 개별적으로 구성할지 결정함",
           "options": [
             {
