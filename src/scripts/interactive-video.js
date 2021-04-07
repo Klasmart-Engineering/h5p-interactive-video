@@ -288,6 +288,11 @@ function InteractiveVideo(params, id, contentData) {
       self.loaded();
     });
 
+    // Video may change size on canplay, so we must react by resizing
+    self.video.on('canplay', function () {
+      self.trigger('resize');
+    });
+
     self.video.on('error', function () {
       // Make sure splash screen is removed so the error is visible.
       self.removeSplash();
@@ -496,7 +501,14 @@ function InteractiveVideo(params, id, contentData) {
 
       // Auto toggle fullscreen on play if on a small device or if requested
       var isSmallDevice = screen ? Math.min(screen.width, screen.height) <= self.width : true;
-      if (!self.hasFullScreen && self.$container.hasClass('h5p-standalone') && ((isSmallDevice && self.$container.hasClass('h5p-minimal')) || self.autofullscreen)) {
+      const canPlayInFullScreen =
+        H5P.fullscreenSupported &&
+        !self.hasFullScreen &&
+        self.$container.hasClass('h5p-standalone') &&
+        (
+          isSmallDevice && self.$container.hasClass('h5p-minimal') || self.autofullscreen
+        );
+      if (canPlayInFullScreen) {
         self.toggleFullScreen();
       }
 
@@ -674,7 +686,8 @@ InteractiveVideo.prototype.attach = function ($container) {
   this.$controls.appendTo($container);
 
   // 'video only' fallback has no interactions
-  let isAnswerable = false;
+  let isAnswerable = this.hasMainSummary();
+
   if (this.interactions) {
     // interactions require parent $container, recreate with input
     this.interactions.forEach(function (interaction) {
@@ -2070,6 +2083,13 @@ InteractiveVideo.prototype.attachControls = function ($wrapper) {
 
   if (self.deactivateSound) {
     self.video.mute();
+  }
+
+  if (self.video.isMuted()) {
+    // Toggle initial mute button state
+    self.controls.$volume
+      .addClass('h5p-muted')
+      .attr('aria-label', self.l10n.sndDisabled);
   }
 
   // TODO: Do not add until qualities are present?

@@ -244,7 +244,7 @@
       ]
     },
     {
-      "label": "Configurações da açãocomportamentais",
+      "label": "Opções gerais",
       "fields": [
         {
           "label": "Começar vídeo aos",
@@ -295,7 +295,7 @@
         },
         {
           "label": "Evitar saltar para frente no vídeo",
-          "description": "Ativar esta opção irá desativar a navegação de vídeo do utilizador através dos controlos predefinidos."
+          "description": "Ativar esta opção irá desativar a navegação no vídeo através dos controlos predefinidos."
         },
         {
           "label": "Desativar som",
@@ -307,7 +307,7 @@
       "label": "Localização",
       "fields": [
         {
-          "label": "Título da interação",
+          "label": "Título de interação",
           "default": "Interação"
         },
         {
@@ -372,7 +372,7 @@
         },
         {
           "label": "Voltar 10 Segundos",
-          "default": "Voltar 10 Segundos"
+          "default": "Voltar atrás 10 segundos"
         },
         {
           "label": "Texto de navegação desativada",
@@ -469,11 +469,11 @@
           "default": "respondidas"
         },
         {
-          "label": "Enviar resumo da linha do ecrã, incluindo a pontuação",
+          "label": "Resultados, incluindo a pontuação",
           "default": "Obteve @score de @total pontos para a pergunta @question que apareceu após @minutes minutos e @seconds segundos."
         },
         {
-          "label": "Enviar resumo da linha do ecrã, incluindo a pontuação",
+          "label": "Resultados, excluindo a pontuação",
           "default": "Respondeu à pergunta @question que apareceu após @minutes minutos e @seconds segundos."
         }
       ]
