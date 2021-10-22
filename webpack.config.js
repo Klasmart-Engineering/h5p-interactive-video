@@ -21,7 +21,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'h5p-course-presentation.css'
+      filename: 'h5p-interactive-video.css'
     })
   ],
   entry: {
