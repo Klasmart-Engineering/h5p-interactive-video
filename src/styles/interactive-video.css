@@ -1203,6 +1203,7 @@
   white-space: nowrap;
   overflow: hidden;
   width: calc(100% - 1em);
+  height: 1.5em;
 }
 
 .h5p-interactive-video .h5p-dialog-titlebar {
