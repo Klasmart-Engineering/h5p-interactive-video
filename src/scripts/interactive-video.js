@@ -2069,16 +2069,14 @@ InteractiveVideo.prototype.attachControls = function ($wrapper) {
 
   self.controls.$playbackRateChooser.insertAfter(self.controls.$playbackRateButton);
 
-  // Add volume button control (toggle mute)
-  if (!isAndroid() && !isIpad()) {
-    self.controls.$volume = self.createButton('mute', 'h5p-control', $right, self.toggleMute);
-    if (self.deactivateSound) {
-      self.controls.$volume
-        .addClass('h5p-muted')
-        .attr('aria-label', self.l10n.sndDisabled);
+  // Add volume button control (toggle mute), KidsLoop customization: Removed exclusion on Android/iPad
+  self.controls.$volume = self.createButton('mute', 'h5p-control', $right, self.toggleMute);
+  if (self.deactivateSound) {
+    self.controls.$volume
+      .addClass('h5p-muted')
+      .attr('aria-label', self.l10n.sndDisabled);
 
-      self.setDisabled(self.controls.$volume);
-    }
+    self.setDisabled(self.controls.$volume);
   }
 
   if (self.deactivateSound) {
