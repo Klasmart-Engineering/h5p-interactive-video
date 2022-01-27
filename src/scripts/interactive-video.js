@@ -273,6 +273,7 @@ function InteractiveVideo(params, id, contentData) {
     // Listen for video events
     if (self.justVideo) {
       self.video.on('loaded', function () {
+        console.log('LOADED 1');
         // Make sure it fits
         self.trigger('resize');
       });
@@ -299,7 +300,6 @@ function InteractiveVideo(params, id, contentData) {
     });
 
     self.video.on('stateChange', function (event) {
-
       if (!self.controls && isLoaded) {
         // Add controls if they're missing and 'loaded' has happened
         self.addControls();
@@ -2762,7 +2762,68 @@ InteractiveVideo.prototype.resize = function () {
   }
 
   this.resizeInteractions();
+
+  // KidsLoop customization for Live View
+  if (!fullscreenOn && !this.editor && !this.isRoot !== undefined && this.isRoot()) {
+    clearTimeout(this.limitHeightTimeout);
+    this.limitHeightTimeout = setTimeout(() => {
+      this.displayLimits = this.computeDisplayLimitsKLL();
+      this.limitHeightKLL(this.displayLimits && this.displayLimits.height > 100 ?
+        this.displayLimits.height :
+        null
+      );
+    }, 50);
+  }
+  else {
+    this.limitHeightKLL(null);
+  }
 };
+
+/**
+ * Limit height of vide container (KidsLoop).
+ * @param {number|null} maxHeight Maximum height, null to explicitly reset.
+ */
+InteractiveVideo.prototype.limitHeightKLL = function (maxHeight) {
+  if (maxHeight === null) {
+    // Reset
+    this.$container.css({ marginLeft: '', marginRight: '', maxWidth: '' });
+    return
+  }
+
+  if (maxHeight === undefined || typeof maxHeight !== 'number' || maxHeight < 1) {
+    return;
+  }
+
+  let videoWidth;
+  let videoHeight;
+  const toolbarHeight = this.$controls.height() || 36; // IV has fixed height toolbar
+
+  const handlerName = this.video.getHandlerName();
+  if (handlerName === 'YouTube') {
+    videoWidth = 16;
+    videoHeight = 9;
+  }
+  else if (handlerName === 'Html5') {
+    const videoElement = document.querySelector('video');
+    if (videoElement && videoElement.videoWidth && videoElement.videoHeight) {
+      videoWidth = videoElement.videoWidth;
+      videoHeight = videoElement.videoHeight;
+    }
+  }
+
+  // Limit container width suitable for maximum height given aspect ratio
+  if (videoWidth && videoHeight) {
+    this.$container.css({
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      maxWidth: `${(maxHeight - toolbarHeight) / videoHeight * videoWidth}px`
+    });
+  }
+  else {
+    // Reset, something might have gone wrong
+    this.$container.css({ marginLeft: '', marginRight: '', maxWidth: '' });
+  }
+}
 
 /**
  * Determine if interactive video should be in mobile view.
@@ -3808,6 +3869,108 @@ InteractiveVideo.prototype.getXAPIData = function () {
     statement: xAPIEvent.data.statement,
     children: childrenData
   };
+};
+
+/**
+ * Compute display limits.
+ * @return {object|null} Height and width in px or null if cannot be determined.
+ */
+InteractiveVideo.prototype.computeDisplayLimits = function () {
+  let topWindow = this.getTopWindow();
+
+  // iOS doesn't change screen dimensions on rotation
+  let screenSize = (this.isIOS() && this.getOrientation() === 'landscape') ?
+    { height: screen.width, width: screen.height } :
+    { height: screen.height, width: screen.width };
+
+  topWindow = topWindow || {
+    innerHeight: screenSize.height,
+    innerWidth: screenSize.width
+  };
+
+  // Smallest value of viewport and container wins
+  return {
+    height: Math.min(topWindow.innerHeight, screenSize.height),
+    width: Math.min(topWindow.innerWidth, this.$container.get(0).offsetWidth)
+  };
+};
+
+/**
+ * Compute display limits for KidsLoop Live.
+ * @return {object|null} Height and width in px or null if cannot be determined.
+ */
+InteractiveVideo.prototype.computeDisplayLimitsKLL = function () {
+  const displayLimits = this.computeDisplayLimits();
+
+  // This only works because KLL enforces height on H5P's iframe
+  displayLimits.height = Math.min(displayLimits.height, document.body.offsetHeight);
+  return displayLimits;
+};
+
+/**
+ * Detect whether user is running iOS.
+ * @return {boolean} True, if user is running iOS.
+ */
+InteractiveVideo.prototype.isIOS = function () {
+  return (
+    ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform) ||
+    (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+  );
+};
+
+/**
+ * Get device orientation.
+ * @return {string} 'portrait' or 'landscape'.
+ */
+InteractiveVideo.prototype.getOrientation = function () {
+  if (screen.orientation && screen.orientation.type) {
+    if (screen.orientation.type.includes('portrait')) {
+      return 'portrait';
+    }
+    else if (screen.orientation.type.includes('landscape')) {
+      return 'landscape';
+    }
+  }
+
+  // Unreliable, as not clear what device's natural orientation is
+  if (typeof window.orientation === 'number') {
+    if (window.orientation === 0 || window.orientation === 180) {
+      return 'portrait';
+    }
+    else if (window.orientation === 90 || window.orientation === -90 || window.orientation === 270) {
+      return 'landscape';
+    }
+  }
+
+  return 'landscape'; // Assume default
+};
+
+/**
+ * Get top DOM Window object.
+ * @param {Window} [startWindow=window] Window to start looking from.
+ * @return {Window|null} Top window.
+ */
+InteractiveVideo.prototype.getTopWindow = function (startWindow) {
+  let sameOrigin;
+  startWindow = startWindow || window;
+
+  // H5P iframe may be on different domain than iframe content
+  try {
+    sameOrigin = startWindow.parent.location.host === window.location.host;
+  }
+  catch (error) {
+    sameOrigin = null;
+  }
+
+  if (!sameOrigin) {
+    return null;
+  }
+
+  if (startWindow.parent === startWindow || ! startWindow.parent) {
+    return startWindow;
+  }
+
+  return this.getTopWindow(startWindow.parent);
 };
 
 /**
