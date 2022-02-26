@@ -1416,7 +1416,7 @@
 }
 
 .h5p-interactive-video .h5p-splash-wrapper .h5p-splash .h5p-splash-title {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1.5em;
   line-height: 1.25em;
   padding: 0 0.5em 1.25em 0.5em;
@@ -1424,7 +1424,7 @@
 }
 
 .h5p-interactive-video .h5p-splash-wrapper .h5p-splash .h5p-splash-description {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   font-size: 0.75em;
   line-height: 1.25;
@@ -1883,7 +1883,7 @@
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.9);
   color: #fff;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Roboto', sans-serif;
   content: attr(data-label);
   white-space: pre;
 }

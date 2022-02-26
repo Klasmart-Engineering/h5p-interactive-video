@@ -4,8 +4,8 @@
   "license": "MIT",
   "contentType": "Media",
   "majorVersion": 1,
-  "minorVersion": 22,
-  "patchVersion": 4,
+  "minorVersion": 23,
+  "patchVersion": 0,
   "machineName": "H5P.InteractiveVideo",
   "author": "Joubel",
   "embedTypes": [
@@ -34,6 +34,11 @@
       "minorVersion": 5
     },
     {
+      "machineName": "FontKidsLoop",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
       "machineName": "jQuery.ui",
       "majorVersion": 1,
       "minorVersion": 10
@@ -46,7 +51,7 @@
     {
       "machineName": "H5P.DragNBar",
       "majorVersion": 1,
-      "minorVersion": 5
+      "minorVersion": 6
     }
   ],
   "editorDependencies": [
@@ -58,7 +63,7 @@
     {
       "machineName": "H5PEditor.InteractiveVideo",
       "majorVersion": 1,
-      "minorVersion": 22
+      "minorVersion": 23
     }
   ]
 }
